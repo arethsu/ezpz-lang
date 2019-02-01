@@ -1,0 +1,35 @@
+<program> ::= <statements>
+
+<statements> ::= <statement> | <statement> <statements>
+<statement> ::= <assignment> | <condition> | <loop> | <function_dec> |
+                <function_call> | <variable_call> | <expression>
+
+<assignment> ::= "@"<allowed_chr> <assignment_operator> <expression>
+
+<condition> ::= <start_if>"!" | <start_if> <statements>"!" |
+                <start_if> <else_ifs> <statements>"!" | <start_if> <else_ifs>"!"
+<start_if> ::= "("<expression>")?" <statements>"!"
+<else_ifs> ::= "("<expression>")?!" <statements>"!" |
+               "("<expression>")?!" <statements>"!" <else_ifs>
+
+<loop> ::= "("<expression>")∞" <statements>"!"
+<function_dec> ::= "("<arguments>")$"<allowed_chr> <statments> "!"
+<arguments> ::= <"@"<allowed_chr> | <"@"<allowed_chr>"," <arguments>
+
+<function_call> ::= "("<parameters>")$"<allowed_chr>
+<parameters> ::= <expression> | <expression>"," <parameters>
+
+<assignment_operator> ::= "<<"
+<arithmetic_operator> ::= "+" | "-" | "*" | "/" | "%%" | "^"
+<comparison_operator> ::= "=" | "<" | ">" | "<=" | ">=" | "=/="
+<bitwise_operator> ::= "|" | "&"
+
+Expressions in operands.
+<expression> ::= <operand> <arithmetic_operator> <operand> |
+                 <operand> <comparison_operator> <operand> | <operand>
+<operand> ::= <number> | <string> | <boolean>
+
+<number> ::= /-?(0|[1-9]\d*)/ | /-?((0|[1-9]\d*)\.\d*[1-9])/
+<string> ::= String
+<allowed_chr> ::= /[a-zA-ZåäöÅÄÖ0-9_]+/
+<boolean> ::= "True" | "False"

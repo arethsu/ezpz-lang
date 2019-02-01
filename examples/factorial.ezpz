@@ -1,0 +1,10 @@
+(@a)$n_fact
+    @result << 0
+    (@a <= 1)?
+        @result << 1!
+    @result << @a * (@a - 1)$n_fact!
+    @result!
+
+@val << 5
+
+("Factorial of ", @val, " is: ", (@val)$n_fact)$print
